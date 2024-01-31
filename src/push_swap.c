@@ -6,7 +6,7 @@
 /*   By: emaravil <emaravil@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:28:25 by emaravil          #+#    #+#             */
-/*   Updated: 2024/01/31 16:53:18 by emaravil         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:57:23 by emaravil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	data;
 	int		size;
 	int		count;
+	int		len;
 
 	count = -1;
 	size = 0;
@@ -37,10 +38,139 @@ int	main(int argc, char **argv)
 	}
 	if (check_if_sorted(data.a.stack, size))
 		exit(EXIT_SUCCESS);
+	ft_printf("## A PRINT STACK A ##\n");
 	while (data.a.stack[++count])
-		ft_printf("stack_a[%d]: %d\n", count, data.a.stack[count]);
+		ft_printf("stack_a[%d]: %d || stack_b[%d]: %d\n", count, data.a.stack[count], count, data.b.stack[count]);
+	stack_op_s(data.a.stack);
+	count = -1;
+	ft_printf("## B SA OPERATION ##\n");
+	while (data.a.stack[++count])
+		ft_printf("stack_a[%d]: %d || stack_b[%d]: %d\n", count, data.a.stack[count], count, data.b.stack[count]);
+	stack_op_r(data.a.stack, size);
+	ft_printf("## C RA OPERATION ##\n");
+	count = -1;
+	while (data.a.stack[++count])
+		ft_printf("stack_a[%d]: %d || stack_b[%d]: %d\n", count, data.a.stack[count], count, data.b.stack[count]);
+	stack_op_rr(data.a.stack, size);
+	ft_printf("## D REVERSE RA OPERATION ##\n");
+	count = -1;
+	while (data.a.stack[++count])
+		ft_printf("stack_a[%d]: %d || stack_b[%d]: %d\n", count, data.a.stack[count], count, data.b.stack[count]);
+	stack_op_push(data.a.stack, data.b.stack, size);
+	ft_printf("## E PUSH A OPERATION ##\n");
+	count = -1;
+	len = size;
+	while (len--)
+	{
+		count++;
+		ft_printf("stack_a[%d]: %d || stack_b[%d]: %d\n", count, data.a.stack[count], count, data.b.stack[count]);
+	}
+	stack_op_push(data.b.stack, data.a.stack, size);
+	ft_printf("## F PUSH B OPERATION ##\n");
+	count = -1;
+	len = size;
+	while (len--)
+	{
+		count++;
+		ft_printf("stack_a[%d]: %d || stack_b[%d]: %d\n", count, data.a.stack[count], count, data.b.stack[count]);
+	}
 	return (0);
 }
+
+void	stack_op_s(int *stack)
+{
+	int	a;
+	int	b;
+
+	a = stack[0];
+	b = stack[1];
+	stack[0] = b;
+	stack[1] = a;
+}
+
+void	stack_op_r(int *stack, int size)
+{
+	int	index;
+	int	temp;
+
+	index = 1;
+	temp = stack[0];
+	while (index < size)
+	{
+		stack[index - 1] = stack[index];
+		index++;
+	}
+	stack[size - 1] = temp;
+}
+
+void	stack_op_rr(int *stack, int size)
+{
+	int	index;
+	int	temp;
+
+	index = 0;
+	temp = stack[size - 1];
+	while (size > index)
+	{
+		// ft_printf("index: %d ## stack[index + 1]: %d || stack[index]: %d\n", size, stack[size - 1], stack[size - 2]);
+		stack[size - 1] = stack[size - 2];
+		// ft_printf("index: %d ## stack[index + 1]: %d || stack[index]: %d\n", size, stack[size - 1], stack[size - 2]);
+		size--;
+	}
+	stack[0] = temp;
+}
+
+void	stack_op_push(int *stack_src, int *stack_dest, int size)
+{
+	int		temp;
+	int		index;
+	int		len;
+
+	len = size;
+	if (stack_is_empty(stack_src))
+		return ;
+	temp = stack_src[0];
+	index = 0;
+	while (len > index)
+	{
+		stack_dest[len - 1] = stack_dest[len - 2];
+		len--;
+	}
+	stack_dest[0] = temp;
+	index = 1;
+	len = size;
+	while (index < len)
+	{
+		stack_src[index - 1] = stack_src[index];
+		index++;
+	}
+	stack_src[len - 1] = 0;
+}
+
+bool	stack_is_empty(int *stack)
+{
+	int sum;
+	int index;
+
+	sum = 0;
+	index = 0;
+	while (sum == 0)
+		sum += stack[index++];
+	if (sum)
+		return (false);
+	else
+		return (true);
+}
+
+// int	stack_size(int *stack)
+// {
+// 	int	count;
+
+// 	count = 0;
+// 	while (stack[count])
+// 		count++;
+// 	return (count);
+// }
 
 void	data_init(t_stack *data, int argc, char **argv)
 {

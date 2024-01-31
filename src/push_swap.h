@@ -59,5 +59,9 @@ bool	check_arg(char *arg);
 void	check_duplicate(t_stack *data, int *stack_num, int size);
 void	stack_tabulate(int *stack_num, int *stack, int size);
 bool	check_if_sorted(int *stack, int size);
-
+void	stack_op_s(int *stack);
+void	stack_op_r(int *stack, int size);
+void	stack_op_rr(int *stack, int size);
+void	stack_op_push(int *stack_src, int *stack_dest, int size);
+bool	stack_is_empty(int *stack);
 #endif
