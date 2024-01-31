@@ -34,7 +34,7 @@ all:	$(LIBFT_LIB) $(FT_PRINTF_LIB) $(NAME)
 
 $(NAME): $(PUSH_SWAP_OBJS)
 	@$(LB) $(NAME) $(PUSH_SWAP_OBJS)
-	$(CC) $(NAME) $(LIBFT) $(FT_PRINTF)
+	$(CC) $(NAME) $(LIBFT) $(FT_PRINTF) -o push_swap
 
 $(LIBFT_LIB):
 	$(MAKE_LIBR) $(LIBFT_DIR)

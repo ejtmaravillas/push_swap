@@ -6,7 +6,7 @@
 /*   By: emaravil <emaravil@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:28:25 by emaravil          #+#    #+#             */
-/*   Updated: 2024/01/31 13:30:28 by emaravil         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:53:18 by emaravil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,29 @@ int	main(int argc, char **argv)
 {
 	char	**stack_raw;
 	t_stack	data;
+	int		size;
+	int		count;
 
+	count = -1;
+	size = 0;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (ft_putendl_fd("Error", 2), 1);
 	if (argc == 2)
 	{
 		stack_raw = ft_split(argv[1], ' ');
-		data_init(&data, count_elements(stack_raw), stack_raw);
+		size = count_elements(stack_raw);
+		data_init(&data, size, stack_raw);
 	}
 	else if (argc > 2 && argv++)
-		data_init(&data, count_elements(argv), argv);
+	{
+		stack_raw = argv;
+		size = count_elements(argv);
+		data_init(&data, size, stack_raw);
+	}
+	if (check_if_sorted(data.a.stack, size))
+		exit(EXIT_SUCCESS);
+	while (data.a.stack[++count])
+		ft_printf("stack_a[%d]: %d\n", count, data.a.stack[count]);
 	return (0);
 }
 
@@ -55,8 +68,6 @@ void	stack_fill(t_stack *data, t_stackinfo *stk, int size, char **argv)
 	}
 	check_duplicate(data, stack_num, size);
 	stack_tabulate(stack_num, stk->stack, size);
-	while (size--)
-		ft_printf("stack_num[%d]: %d || stack_order[%d]: %d\n", size, stack_num[size], size, stk->stack[size]);
 	free(stack_num);
 }
 
@@ -129,6 +140,20 @@ bool	check_arg(char *arg)
 	return (true);
 }
 
+bool	check_if_sorted(int *stack, int size)
+{
+	int	index;
+
+	index = 0;
+	while (index < size - 1)
+	{
+		if (stack[index] > stack[index + 1])
+			return (false);
+		index++;
+	}
+	return (true);
+}
+
 void	stack_init(t_stack *data, t_stackinfo *stk, int size)
 {
 	stk->stack = malloc(sizeof(int) * size);
@@ -147,7 +172,8 @@ int	count_elements(char **s)
 	count = 0;
 	while (*s++)
 		count++;
-	ft_printf("count: %d\n", count);
+	if (count == 1)
+		exit(EXIT_SUCCESS);
 	return (count);
 }
 

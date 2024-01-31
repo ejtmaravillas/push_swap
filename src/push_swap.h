@@ -58,5 +58,6 @@ void	stack_fill(t_stack *data, t_stackinfo *stk, int size, char **argv);
 bool	check_arg(char *arg);
 void	check_duplicate(t_stack *data, int *stack_num, int size);
 void	stack_tabulate(int *stack_num, int *stack, int size);
+bool	check_if_sorted(int *stack, int size);
 
 #endif
