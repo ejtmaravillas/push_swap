@@ -18,9 +18,9 @@ int	main(int argc, char **argv)
 	t_stack	data;
 	int		size;
 
-	// size = 0;
+	size = 0;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (ft_putendl_fd("Error", 2), -1);
+		return (ft_printf("Error\n"), 1);
 	if (argc == 2)
 	{
 		stack_raw = ft_split(argv[1], ' ');
@@ -36,8 +36,12 @@ int	main(int argc, char **argv)
 		data_init(&data, size, stack_raw);
 	}
 	if (check_if_sorted(data.a.stack, size))
-		return(free_stack(&data),1);
+		exit(EXIT_SUCCESS);
+	// ft_printf("########## PRE SORT #########\n");
+	// stack_print(data);
     stack_sort(data, size);
-	free_stack(&data);
+	stack_print(data);
+	free(data.a.stack);
+	free(data.b.stack);
 	return (0);
 }

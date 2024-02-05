@@ -64,7 +64,7 @@ void	check_duplicate(t_stack *data, int *stack_num, int size);
 void	stack_tabulate(int *stack_num, int *stack, int size);
 bool	check_if_sorted(int *stack, int size);
 void	stack_op_s(int *stack, char c);
-void	stack_op_r(int *stack, int size, char c);
+void	stack_op_r(t_stack data, int *stack, int size, char c);
 void	stack_op_rr(int *stack, int size, char c);
 void	stack_op_push(int *stack_src, int *stack_dest, int size, char c);
 bool	stack_is_empty(int *stack);
@@ -95,6 +95,4 @@ void	stack_get_operate(t_stack data, int loc, int val);
 void	stack_sort_lt5(t_stack data);
 void	stack_sort_gt5(t_stack data);
 int		stack_get_div(int size);
-void	stack_op_ra_rr(t_stack data);
-void	stack_op_rb_rr(t_stack data);
 #endif
