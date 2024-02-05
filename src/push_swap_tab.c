@@ -83,6 +83,7 @@ void	free_stack_raw(char **stack_raw)
 		free(stack_raw[count]);
 		count++;
 	}
+	free(stack_raw);
 }
 
 int	get_abs(int num1, int num2)

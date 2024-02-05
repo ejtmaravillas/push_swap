@@ -17,6 +17,8 @@ void	stack_sort_forward(t_stack data)
 	int	mid;
 	int	size;
 
+	if (check_if_sorted(data, data.a.size))
+		return ;
 	size = data.a.size;
 	mid = size / DIVISION;
 	data.a.first = 0;

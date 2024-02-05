@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 		size = count_elements(stack_raw);
 		data_init(&data_check, size, stack_raw);
 	}
-	else if (argc > 2 && argv++)
+	else
 	{
-		stack_raw = argv;
+		stack_raw = ++argv;
 		size = count_elements(argv);
 		data_init(&data_check, size, stack_raw);
 	}
@@ -88,7 +88,7 @@ int	stack_command(t_stack data, char *command)
 
 void	print_out(t_stack data)
 {
-	if (check_if_sorted(data.a.stack, data.a.size))
+	if (check_if_sorted(data, data.a.size))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

@@ -18,6 +18,8 @@ void	stack_sort_backward(t_stack data)
 	int	len;
 	int	val;
 
+	if (check_if_sorted(data, data.a.size))
+		return ;
 	while (data.b.stack[0] > 0)
 	{
 		len = stack_get_len(data.b.stack, data.a.size);
@@ -92,14 +94,14 @@ bool	check_arg(char *arg)
 	return (true);
 }
 
-bool	check_if_sorted(int *stack, int size)
+bool	check_if_sorted(t_stack data, int size)
 {
 	int	index;
 
 	index = 0;
 	while (index < size - 1)
 	{
-		if (stack[index] > stack[index + 1])
+		if (data.a.stack[index] > data.a.stack[index + 1])
 			return (false);
 		index++;
 	}

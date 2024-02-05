@@ -16,11 +16,9 @@ void	stack_sort(t_stack data, int size)
 {
 	if (size == 3)
 	{
-		if (!check_if_sorted(data.a.stack, size))
-		{
+		if (!check_if_sorted(data, size))
 			sort_stack_three(data);
-			free_stack(&data);
-		}
+		free_stack(&data);
 		exit(EXIT_SUCCESS);
 	}
 	else
@@ -29,7 +27,7 @@ void	stack_sort(t_stack data, int size)
 		data.b.size = size;
 		stack_sort_forward(data);
 		stack_sort_backward(data);
-		if (!check_if_sorted(data.a.stack, size))
+		if (!check_if_sorted(data, size))
 		{
 			if (check_oneloc(data, size))
 				while (data.a.stack[0] != 1)
