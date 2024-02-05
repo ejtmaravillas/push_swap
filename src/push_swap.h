@@ -21,16 +21,6 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "../lib/libft/libft.h"
 
-// stack_list --> inside the stack --> linked list for each element
-// stack_list *next --> for the next element;
-// stack_list *prev --> for the previous element;
-typedef struct stack_list
-{
-	void				*value;
-	struct stack_list	*next;
-	struct stack_list	*prev;
-}	t_stacklist;
-
 // stack_info --> necessary info for stack a and stack b
 // stack --> int pointer for the stack values
 // size --> number of elements for stack a and b
@@ -42,7 +32,7 @@ typedef struct stack_info
 	int	size;
 	int	first;
 	int	last;
-	int mid;
+	int	mid;
 }	t_stackinfo;
 
 typedef struct stack_push_swap
@@ -68,26 +58,25 @@ void	stack_op_r(int *stack, int size, char c);
 void	stack_op_rr(int *stack, int size, char c);
 void	stack_op_push(int *stack_src, int *stack_dest, int size, char c);
 bool	stack_is_empty(int *stack);
-void    stack_sort_forward(t_stack data);
-void    stack_sort_gtmid(t_stack data, int size, int mid);
-void    stack_sort_lsmid(t_stack data, int size, int mid);
+void	stack_sort_forward(t_stack data);
+void	stack_sort_gtmid(t_stack data, int size, int mid);
+void	stack_sort_lsmid(t_stack data, int size, int mid);
 void	stack_sort_backward(t_stack data);
 void	stack_print(t_stack data);
-void    sort_stack_three_a(t_stack data, int stack[3], int size);
-void    sort_stack_three(t_stack data);
-void    stack_sort(t_stack data, int size);
+void	sort_stack_three_a(t_stack data, int stack[3], int size);
+void	sort_stack_three(t_stack data);
+void	stack_sort(t_stack data, int size);
 int		stack_n_loc_a(int *stack_src, int *stack_dest, int size);
 int		stack_n_loc_b(int *stack_src, int *stack_dest, int size);
-bool    check_np1(t_stack data);
-bool    check_nm1(t_stack data);
-bool    check_oneloc(t_stack data, int size);
+bool	check_np1(t_stack data);
+bool	check_nm1(t_stack data);
+bool	check_oneloc(t_stack data, int size);
 int		get_abs(int num1, int num2);
 void	stack_sort_rem(t_stack data);
 int		stack_get_min(int *stack, int min, int size);
 int		stack_get_max(int *stack, int size);
 int		stack_get_len(int *stack, int size);
 void	stack_move_compare(t_stack data, int loca, int locb);
-void	stack_sort_backward_a(int *stack, int loc, int val, int size, char c);
 bool	stack_check(t_stack data, int mid);
 void	stack_op_ra_r(t_stack data);
 void	stack_op_rb_r(t_stack data);
@@ -97,4 +86,5 @@ void	stack_sort_gt5(t_stack data);
 int		stack_get_div(int size);
 void	stack_op_ra_rr(t_stack data);
 void	stack_op_rb_rr(t_stack data);
+
 #endif

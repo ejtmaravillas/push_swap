@@ -1,62 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_sort_forward.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emaravil <emaravil@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 00:07:46 by emaravil          #+#    #+#             */
+/*   Updated: 2024/02/06 00:07:46 by emaravil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void    stack_sort_forward(t_stack data)
+void	stack_sort_forward(t_stack data)
 {
-    int mid;
-    int size;
+	int	mid;
+	int	size;
 
-	// ft_printf("##### FORWARD #####\n");
 	size = data.a.size;
-	// ft_printf("size: %d\n", size);
-	mid = size/DIVISION;
+	mid = size / DIVISION;
 	data.a.first = 0;
 	data.a.last = mid * 2;
-	// ft_printf("first: %d || mid: %d || last: %d\n", data.a.first, mid, data.a.last);
 	while (data.a.first != data.a.last && data.a.first < data.a.last)
 	{
-		// ft_printf("first: %d || mid: %d || last: %d\n", data.a.first, mid, data.a.last);
-		// stack_print(data);
 		stack_sort_gtmid(data, data.a.size, mid);
-		size = size - ((size * 2)/DIVISION);
-		mid = data.a.last + (size/DIVISION);
+		size = size - ((size * 2) / DIVISION);
+		mid = data.a.last + (size / DIVISION);
 		data.a.first = data.a.last;
-		data.a.last = mid + (size/DIVISION);
+		data.a.last = mid + (size / DIVISION);
 	}
 	stack_sort_rem(data);
 	sort_stack_three(data);
 }
 
-void    stack_sort_gtmid(t_stack data, int size, int mid)
+void	stack_sort_gtmid(t_stack data, int size, int mid)
 {
-	int count;
+	int	count;
 
 	count = data.a.first;
-    while (size-- && count < data.a.last)
-    {
-        if (stack_check(data, mid))
+	while (size-- && count < data.a.last)
+	{
+		if (stack_check(data, mid))
 			count++;
-    }
+	}
 }
 
-void    sort_stack_three(t_stack data)
+void	sort_stack_three(t_stack data)
 {
 	int	n;
 	int	m;
 	int	order;
-    int stack[3];
-    int size;
+	int	stack[3];
+	int	size;
 
 	n = 0;
-    size = 0;
-    while (data.a.stack[n] > 0 && n < data.a.size)
-    {
-        stack[size] = 0;
-        size++;
-        n++;
-		if (n == data.a.size)
+	size = 0;
+	while (data.a.stack[n] > 0 && n < data.a.size)
+	{
+		stack[size++] = 0;
+		if (++n == data.a.size)
 			break ;
-    }
-    n = 0;
+	}
+	n = 0;
 	while (n < size)
 	{
 		m = 0;
@@ -66,36 +71,36 @@ void    sort_stack_three(t_stack data)
 				order++;
 		stack[n++] = order;
 	}
-    sort_stack_three_a(data, stack, size);
+	sort_stack_three_a(data, stack, size);
 }
 
-void    sort_stack_three_a(t_stack data, int stack[3], int size)
+void	sort_stack_three_a(t_stack data, int stack[3], int size)
 {
-    if ((stack[0] - stack[1]) == -2 && stack[0] == 1)
-    {
-        stack_op_r(data.a.stack, size, 'a');
-        stack_op_s(data.a.stack, 'a');
-        stack_op_rr(data.a.stack, size, 'a');
-    }
-    else if ((stack[0] - stack[1]) == 1 && stack[0] == 2)
-        stack_op_s(data.a.stack, 'a');
-    else if ((stack[0] - stack[1]) == 1 && stack[0] == 3)
-    {
-        stack_op_s(data.a.stack, 'a');
-        stack_op_rr(data.a.stack, size, 'a');
-    }
-    else if ((stack[0] - stack[1]) == 2 && stack[0] == 3)
-        stack_op_r(data.a.stack, size, 'a');
-    else if ((stack[0] - stack[1]) == -1 && stack[0] == 2)
-        stack_op_rr(data.a.stack, size, 'a');
+	if ((stack[0] - stack[1]) == -2 && stack[0] == 1)
+	{
+		stack_op_r(data.a.stack, size, 'a');
+		stack_op_s(data.a.stack, 'a');
+		stack_op_rr(data.a.stack, size, 'a');
+	}
+	else if ((stack[0] - stack[1]) == 1 && stack[0] == 2)
+		stack_op_s(data.a.stack, 'a');
+	else if ((stack[0] - stack[1]) == 1 && stack[0] == 3)
+	{
+		stack_op_s(data.a.stack, 'a');
+		stack_op_rr(data.a.stack, size, 'a');
+	}
+	else if ((stack[0] - stack[1]) == 2 && stack[0] == 3)
+		stack_op_r(data.a.stack, size, 'a');
+	else if ((stack[0] - stack[1]) == -1 && stack[0] == 2)
+		stack_op_rr(data.a.stack, size, 'a');
 }
 
 void	stack_sort_rem(t_stack data)
 {
-    int mid;
-    int size;
-	int index;
-	int len;
+	int	mid;
+	int	size;
+	int	index;
+	int	len;
 
 	index = 0;
 	while (data.a.stack[index] > 0 && index < data.a.size)
@@ -108,13 +113,13 @@ void	stack_sort_rem(t_stack data)
 	data.a.first = stack_get_min(data.a.stack, data.a.size, data.a.size) - 1;
 	data.a.last = stack_get_max(data.a.stack, data.a.size) - 3;
 	size = len;
-	mid = data.a.first + size/2;
+	mid = data.a.first + size / 2;
 	while (data.a.first != data.a.last && data.a.first < data.a.last)
 	{
 		stack_sort_gtmid(data, data.a.size, mid);
-		size = size - ((size * 2)/2);
-		mid = data.a.last + (size/2);
+		size = size - ((size * 2) / 2);
+		mid = data.a.last + (size / 2);
 		data.a.first = data.a.last;
-		data.a.last = mid + (size/2);
+		data.a.last = mid + (size / 2);
 	}
 }

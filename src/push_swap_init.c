@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_init.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emaravil <emaravil@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 00:00:16 by emaravil          #+#    #+#             */
+/*   Updated: 2024/02/06 00:00:16 by emaravil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	data_init(t_stack *data, int argc, char **argv)
@@ -15,11 +27,10 @@ void	stack_init(t_stack *data, t_stackinfo *stk, int size)
 		error(data);
 	stk->first = 0;
 	stk->last = 0;
-    stk->mid = 0;
+	stk->mid = 0;
 	stk->size = size;
 	ft_memset(stk->stack, 0, sizeof(int) * size);
 }
-
 
 int	count_elements(char **s)
 {
@@ -28,8 +39,6 @@ int	count_elements(char **s)
 	count = 0;
 	while (*s++)
 		count++;
-	// if (count == 1)
-	// 	exit(EXIT_SUCCESS);
 	return (count);
 }
 

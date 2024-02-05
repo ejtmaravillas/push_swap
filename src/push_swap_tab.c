@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_tab.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emaravil <emaravil@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 00:13:54 by emaravil          #+#    #+#             */
+/*   Updated: 2024/02/06 00:13:54 by emaravil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	stack_tabulate(int *stack_num, int *stack, int size)
@@ -63,7 +75,7 @@ void	check_duplicate(t_stack *data, int *stack_num, int size)
 
 void	free_stack_raw(char **stack_raw)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (stack_raw[count] != NULL)
@@ -73,10 +85,9 @@ void	free_stack_raw(char **stack_raw)
 	}
 }
 
-
 int	get_abs(int num1, int num2)
 {
-	int diff;
+	int	diff;
 
 	diff = num1 - num2;
 	if (diff < 0)

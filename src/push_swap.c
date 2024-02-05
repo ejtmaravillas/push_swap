@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 	t_stack	data;
 	int		size;
 
-	// size = 0;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (ft_putendl_fd("Error", 2), -1);
 	if (argc == 2)
@@ -36,8 +35,8 @@ int	main(int argc, char **argv)
 		data_init(&data, size, stack_raw);
 	}
 	if (check_if_sorted(data.a.stack, size))
-		return(free_stack(&data),1);
-    stack_sort(data, size);
+		return (free_stack(&data), 1);
+	stack_sort(data, size);
 	free_stack(&data);
 	return (0);
 }

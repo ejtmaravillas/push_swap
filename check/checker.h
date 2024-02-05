@@ -21,7 +21,8 @@
 # include "../src/push_swap.h"
 # include "../lib/get_next_line/get_next_line.h"
 
-int     stack_command(t_stack data, char *command);
-void    print_out(t_stack data);
+int		stack_command(t_stack data, char *command);
+void	print_out(t_stack data);
+void	check_gnl(t_stack data_check, char *commands);
 
 #endif
