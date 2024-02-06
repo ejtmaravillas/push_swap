@@ -12,15 +12,14 @@
 
 #include "push_swap.h"
 
-void	data_init(t_stack *data, int argc, char **argv)
+void	data_init(t_stack *data, int argc, char **argv, int d)
 {
-	stack_init(data, &data->a, argc);
-	stack_init(data, &data->b, argc);
-	data->stacklist = NULL;
+	stack_init(data, &data->a, argc, d);
+	stack_init(data, &data->b, argc, d);
 	stack_fill(data, &data->a, argc, argv);
 }
 
-void	stack_init(t_stack *data, t_stackinfo *stk, int size)
+void	stack_init(t_stack *data, t_stackinfo *stk, int size, int d)
 {
 	stk->stack = malloc(sizeof(int) * size);
 	if (!stk->stack)
@@ -28,6 +27,7 @@ void	stack_init(t_stack *data, t_stackinfo *stk, int size)
 	stk->first = 0;
 	stk->last = 0;
 	stk->mid = 0;
+	stk->d = d;
 	stk->size = size;
 	ft_memset(stk->stack, 0, sizeof(int) * size);
 }

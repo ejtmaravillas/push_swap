@@ -21,6 +21,8 @@ void	stack_op_r(int *stack, int size, char c)
 	if (c == 'a' || c == 'b')
 		ft_printf("r%c\n", c);
 	temp = stack[0];
+	if (!temp)
+		return ;
 	size_stack = 0;
 	while (stack[size_stack] != 0 && size_stack < size)
 		if (++size_stack == size)
@@ -47,6 +49,8 @@ void	stack_op_rr(int *stack, int size, char c)
 
 	if (c == 'a' || c == 'b')
 		ft_printf("rr%c\n", c);
+	if (!stack[0])
+		return ;
 	size_stack = 0;
 	while (stack[size_stack] != 0 && size_stack < size)
 	{
@@ -88,4 +92,15 @@ void	stack_op_push(int *stack_src, int *stack_dest, int size, char c)
 	stack_src[len - 1] = 0;
 	if (c == 'a' || c == 'b')
 		ft_printf("p%c\n", c);
+}
+
+void	free_error_arg(t_stack *data, char **argv, int *stack_num)
+{
+	t_stackinfo	*stk;
+
+	stk = &data->a;
+	if (stk->d <= 2)
+		free_stack_raw(argv);
+	free(stack_num);
+	error(data);
 }

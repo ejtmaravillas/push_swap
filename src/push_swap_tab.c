@@ -38,20 +38,24 @@ void	stack_fill(t_stack *data, t_stackinfo *stk, int size, char **argv)
 	stack_num = malloc(sizeof(int) * size);
 	count = 0;
 	if (!stack_num)
-		error(data);
+	{
+		free_error_arg(data, argv, stack_num);
+	}
 	while (argv[count])
 	{
 		if (!check_arg(argv[count]))
-			error(data);
+		{
+			free_error_arg(data, argv, stack_num);
+		}
 		stack_num[count] = ft_atoi(argv[count]);
 		count++;
 	}
-	check_duplicate(data, stack_num, size);
+	check_duplicate(data, stack_num, size, argv);
 	stack_tabulate(stack_num, stk->stack, size);
 	free(stack_num);
 }
 
-void	check_duplicate(t_stack *data, int *stack_num, int size)
+void	check_duplicate(t_stack *data, int *stack_num, int size, char **argv)
 {
 	int	n;
 	int	m;
@@ -63,10 +67,7 @@ void	check_duplicate(t_stack *data, int *stack_num, int size)
 		while (m < size)
 		{
 			if (stack_num[n] == stack_num[m])
-			{
-				free(stack_num);
-				error(data);
-			}
+				free_error_arg(data, argv, stack_num);
 			m++;
 		}
 		n++;

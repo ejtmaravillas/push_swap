@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	{
 		stack_raw = ft_split(argv[1], ' ');
 		size = count_elements(stack_raw);
-		data_init(&data, size, stack_raw);
+		data_init(&data, size, stack_raw, argc);
 		free_stack_raw(stack_raw);
 		stack_sort(data, size);
 		free_stack(&data);
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	{
 		stack_raw = ++argv;
 		size = count_elements(argv);
-		data_init(&data, size, stack_raw);
+		data_init(&data, size, stack_raw, argc);
 		stack_sort(data, size);
 		free_stack(&data);
 	}

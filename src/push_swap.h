@@ -32,24 +32,25 @@ typedef struct stack_info
 	int	first;
 	int	last;
 	int	mid;
+	int	d;
 }	t_stackinfo;
 
 typedef struct stack_push_swap
 {
 	t_stackinfo	a;
 	t_stackinfo	b;
-	t_list		*stacklist;
 }	t_stack;
 
 int		count_elements(char **s);
-void	data_init(t_stack *data, int argc, char **argv);
-void	stack_init(t_stack *data, t_stackinfo *stk, int size);
+void	data_init(t_stack *data, int argc, char **argv, int d);
+void	stack_init(t_stack *data, t_stackinfo *stk, int size, int d);
 void	error(t_stack *data);
+void	free_error_arg(t_stack *data, char **argv, int *stack_num);
 void	free_stack(t_stack *data);
 void	free_stack_raw(char **stack_raw);
 void	stack_fill(t_stack *data, t_stackinfo *stk, int size, char **argv);
 bool	check_arg(char *arg);
-void	check_duplicate(t_stack *data, int *stack_num, int size);
+void	check_duplicate(t_stack *data, int *stack_num, int size, char **argv);
 void	stack_tabulate(int *stack_num, int *stack, int size);
 bool	check_if_sorted(t_stack data, int size);
 void	stack_op_s(int *stack, char c);

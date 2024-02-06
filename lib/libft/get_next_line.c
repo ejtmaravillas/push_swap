@@ -35,6 +35,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	newline = fetch_newline(dump);
 	dump = get_remainingdump(dump, ft_strchr_gnl(dump, '\n'));
+	if (!check_string_arg(newline))
+		free_null(dump);
 	return (newline);
 }
 
@@ -72,7 +74,7 @@ char	*get_remainingdump(char *dump, char *newline)
 		return (free_null(dump), NULL);
 	start = newline - dump + 1;
 	remlen = ft_strlen_gnl(dump);
-	if (start > remlen)
+	if ((start > remlen))
 		return (free_null(dump), NULL);
 	if ((start + BUFFER_SIZE) > remlen)
 		remlen = remlen - start;

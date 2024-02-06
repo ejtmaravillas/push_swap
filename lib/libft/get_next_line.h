@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <sys/resource.h>
+# include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -34,4 +35,6 @@ char	*ft_strjoin_gnl(char *s1, char *s2);
 void	free_null(char *ptr);
 char	*error_check(char *dump);
 void	*ft_calloc_gnl(size_t buffer);
+bool	check_string_arg(char *newline);
+
 #endif //GET_NEXT_LINE_H

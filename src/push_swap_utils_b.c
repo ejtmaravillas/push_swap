@@ -32,11 +32,12 @@ void	stack_op_ra_r(t_stack data)
 	int	size_stack;
 
 	temp = data.a.stack[0];
+	if (!data.b.stack[0])
+		return ;
 	size_stack = 0;
 	while (data.a.stack[size_stack] != 0 && size_stack < data.a.size)
-	{
-		size_stack++;
-	}
+		if (++size_stack == data.a.size)
+			break ;
 	index = 1;
 	while (index < data.a.size)
 	{
@@ -61,9 +62,8 @@ void	stack_op_rb_r(t_stack data)
 	temp = data.b.stack[0];
 	size_stack = 0;
 	while (data.b.stack[size_stack] != 0 && size_stack < data.a.size)
-	{
-		size_stack++;
-	}
+		if (++size_stack == data.a.size)
+			break ;
 	index = 1;
 	while (index < data.a.size)
 	{
@@ -108,6 +108,8 @@ void	stack_op_rb_rr(t_stack data)
 	int	temp;
 	int	size_stack;
 
+	if (!data.b.stack[0])
+		return ;
 	size_stack = 0;
 	while (data.b.stack[size_stack] != 0 && size_stack < data.a.size)
 	{

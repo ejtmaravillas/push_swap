@@ -52,7 +52,7 @@ $(NAME): $(PUSH_SWAP_OBJS)
 	$(CC) $(NAME) $(CFLAGS) $(LIBFT) $(FT_PRINTF) $(GNL) -o push_swap
 
 $(CHECK): $(CHECK_OBJS)
-	$(CC) $(CFLAGS) $(CHECK_OBJS) $(LIBFT) $(FT_PRINTF) $(GNL) -o checker
+	$(CC) $(CFLAGS) $(CHECK_OBJS) $(LIBFT) -o checker
 
 $(LIBFT_LIB):
 	$(MAKE_LIBR) $(LIBFT_DIR)
@@ -72,9 +72,8 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME) $(PUSH_SWAP_OBJS)
+	$(RM) $(CHECK) $(CHECK_OBJS)
 	$(MAKE_LIBR) $(LIBFT_DIR) fclean
-	$(MAKE_LIBR) $(FT_PRINTF_DIR) fclean
-	$(MAKE_LIBR) $(GNL_DIR) fclean
 
 re:	fclean all
 

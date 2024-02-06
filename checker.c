@@ -17,32 +17,35 @@ int	main(int argc, char **argv)
 	char	**stack_raw;
 	t_stack	data_check;
 	int		size;
-	char	*commands;
 
 	size = 0;
-	commands = malloc(1 * sizeof(char));
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (0);
+		return (1);
 	if (argc == 2)
 	{
 		stack_raw = ft_split(argv[1], ' ');
 		size = count_elements(stack_raw);
-		data_init(&data_check, size, stack_raw);
+		data_init(&data_check, size, stack_raw, argc);
 	}
 	else
 	{
 		stack_raw = ++argv;
 		size = count_elements(argv);
-		data_init(&data_check, size, stack_raw);
+		data_init(&data_check, size, stack_raw, argc);
 	}
-	check_gnl(data_check, commands);
+	check_gnl(data_check, stack_raw);
 	print_out(data_check);
 	free_stack(&data_check);
 	return (0);
 }
 
-void	check_gnl(t_stack data_check, char *commands)
+void	check_gnl(t_stack data_check, char **stack_raw)
 {
+	char	*commands;
+
+	commands = malloc(1 * sizeof(char));
+	if (data_check.a.d <= 2)
+		free_stack_raw(stack_raw);
 	while (commands != NULL)
 	{
 		free(commands);
@@ -51,8 +54,8 @@ void	check_gnl(t_stack data_check, char *commands)
 			break ;
 		if (!(stack_command(data_check, commands)))
 		{
-			ft_printf("Error\n");
-			exit(-1);
+			free_null(commands);
+			error(&data_check);
 		}
 	}
 }
@@ -80,9 +83,7 @@ int	stack_command(t_stack data, char *command)
 	else if (!(ft_strncmp(command, "rrr\n", 4)))
 		stack_op_ra_rr(data);
 	else
-	{
 		return (0);
-	}
 	return (1);
 }
 

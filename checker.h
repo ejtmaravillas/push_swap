@@ -21,6 +21,6 @@
 
 int		stack_command(t_stack data, char *command);
 void	print_out(t_stack data);
-void	check_gnl(t_stack data_check, char *commands);
+void	check_gnl(t_stack data_check, char **stack_raw);
 
 #endif
