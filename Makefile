@@ -30,7 +30,7 @@ GNL_LIB = $(GNL_DIR)/$(GNL)
 # LIBRARY CALL FOR LIBFT AND FT_PRINTF LIBRARIES AND GNL
 LIBR = $(LIBFT_LIB) $(FT_PRINTF_LIB) $(GNL_LIB)
 
-# MAKE LIBFT AND FT_PRINTF
+# MAKE LIBFT AND FT_PRINTF AND GNLßßß
 # https://www.gnu.org/software/make/manual/make.html#Recursion
 MAKE_LIBR = make --no-print-directory -C
 
@@ -41,7 +41,9 @@ RM= rm -f
 
 LB= ar rcs
 
-all:	$(LIBFT_LIB) $(FT_PRINTF_LIB) $(GNL_LIB) $(NAME) $(CHECK)
+all:	$(LIBFT_LIB) $(FT_PRINTF_LIB) $(GNL_LIB) $(NAME)
+
+bonus: $(CHECK)
 
 $(NAME): $(PUSH_SWAP_OBJS)
 	@$(LB) $(NAME) $(PUSH_SWAP_OBJS)
