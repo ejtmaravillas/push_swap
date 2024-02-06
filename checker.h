@@ -16,10 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "../lib/ft_printf/ft_printf.h"
-# include "../lib/libft/libft.h"
-# include "../src/push_swap.h"
-# include "../lib/get_next_line/get_next_line.h"
+# include "lib/libft/libft.h"
+# include "src/push_swap.h"
 
 int		stack_command(t_stack data, char *command);
 void	print_out(t_stack data);

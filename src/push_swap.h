@@ -18,7 +18,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "../lib/ft_printf/ft_printf.h"
 # include "../lib/libft/libft.h"
 
 // stack_info --> necessary info for stack a and stack b
