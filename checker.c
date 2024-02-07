@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	{
 		stack_raw = ft_split(argv[1], ' ');
 		size = count_elements(stack_raw);
+		if (size == 1)
+			return (free_stack_raw(stack_raw), 1);
 		data_init(&data_check, size, stack_raw, argc);
 	}
 	else
