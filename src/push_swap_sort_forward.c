@@ -82,7 +82,6 @@ void	sort_stack_three_a(t_stack data, int stack[3], int size)
 	{
 		stack_op_rr(data.a.stack, size, 'a');
 		stack_op_s(data.a.stack, 'a');
-		// stack_op_rr(data.a.stack, size, 'a');
 	}
 	else if ((stack[0] - stack[1]) == 1 && stack[0] == 2)
 		stack_op_s(data.a.stack, 'a');

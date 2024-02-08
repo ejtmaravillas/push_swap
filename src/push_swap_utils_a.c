@@ -68,30 +68,35 @@ void	stack_op_rr(int *stack, int size, char c)
 	stack[0] = temp;
 }
 
-void	stack_op_push(int *stack_src, int *stack_dest, int size, char c)
+void	stack_op_s(int *stack, char c)
 {
-	int	temp;
-	int	index;
-	int	len;
+	int	a;
+	int	b;
 
-	len = size;
-	temp = stack_src[0];
-	stack_src[0] = 0;
-	size++;
-	while (--size > 1)
-	{
-		stack_dest[size - 1] = stack_dest[size - 2];
-	}
-	stack_dest[0] = temp;
-	index = 1;
-	while (index < len)
-	{
-		stack_src[index - 1] = stack_src[index];
-		index++;
-	}
-	stack_src[len - 1] = 0;
 	if (c == 'a' || c == 'b')
-		ft_printf("p%c\n", c);
+		ft_printf("s%c\n", c);
+	if (!stack[0])
+		return ;
+	a = stack[0];
+	b = stack[1];
+	stack[0] = b;
+	stack[1] = a;
+}
+
+void	stack_op_ss(t_stack data, char c)
+{
+	if (!data.a.stack[0] || !data.b.stack[0])
+		return ;
+	if (c == 'a' || c == 'b')
+	{
+		stack_op_s(data.a.stack, 'a');
+		stack_op_s(data.b.stack, 'b');
+	}
+	else
+	{
+		stack_op_s(data.a.stack, c);
+		stack_op_s(data.b.stack, c);
+	}
 }
 
 void	free_error_arg(t_stack *data, char **argv, int *stack_num)

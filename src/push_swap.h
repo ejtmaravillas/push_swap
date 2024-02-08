@@ -33,7 +33,7 @@ typedef struct stack_info
 	int	last;
 	int	mid;
 	int	d;
-	int div;
+	int	div;
 }	t_stackinfo;
 
 typedef struct stack_push_swap
@@ -55,6 +55,7 @@ void	check_duplicate(t_stack *data, int *stack_num, int size, char **argv);
 void	stack_tabulate(int *stack_num, int *stack, int size);
 bool	check_if_sorted(t_stack data, int size);
 void	stack_op_s(int *stack, char c);
+void	stack_op_ss(t_stack data, char c);
 void	stack_op_r(int *stack, int size, char c);
 void	stack_op_rr(int *stack, int size, char c);
 void	stack_op_push(int *stack_src, int *stack_dest, int size, char c);

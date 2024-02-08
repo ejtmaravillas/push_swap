@@ -12,17 +12,30 @@
 
 #include "push_swap.h"
 
-void	stack_op_s(int *stack, char c)
+void	stack_op_push(int *stack_src, int *stack_dest, int size, char c)
 {
-	int	a;
-	int	b;
+	int	temp;
+	int	index;
+	int	len;
 
+	len = size;
+	temp = stack_src[0];
+	stack_src[0] = 0;
+	size++;
+	while (--size > 1)
+	{
+		stack_dest[size - 1] = stack_dest[size - 2];
+	}
+	stack_dest[0] = temp;
+	index = 1;
+	while (index < len)
+	{
+		stack_src[index - 1] = stack_src[index];
+		index++;
+	}
+	stack_src[len - 1] = 0;
 	if (c == 'a' || c == 'b')
-		ft_printf("s%c\n", c);
-	a = stack[0];
-	b = stack[1];
-	stack[0] = b;
-	stack[1] = a;
+		ft_printf("p%c\n", c);
 }
 
 void	stack_op_ra_r(t_stack data)
