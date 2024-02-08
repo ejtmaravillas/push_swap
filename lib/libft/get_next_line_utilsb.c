@@ -35,6 +35,8 @@ bool	check_string_arg(char *newline)
 		return (true);
 	else if (!(ft_strncmp(newline, "rrr\n", 4)))
 		return (true);
+	else if (!(ft_strncmp(newline, "ss\n", 3)))
+		return (true);
 	else
 		return (false);
 }
