@@ -1,5 +1,5 @@
 NAME=push_swap.a
-CHECK=checker.a
+CHECK=checker
 
 CFLAGS= -Wall -Werror -Wextra
 
@@ -67,7 +67,7 @@ $(LIBFT_LIB):
 	$(CC) $(CFLAGS) -c -o $@ $^
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(PUSH_SWAP_OBJS)
 	$(RM) $(CHECK_OBJS)
 
 fclean: clean

@@ -89,7 +89,7 @@ void	stack_print(t_stack data)
 	while (len--)
 	{
 		count++;
-		ft_printf("stack_a[%d]: \n", count);
+		ft_printf("stack_a[%d]: %d\n", count, data.a.stack[count]);
 	}
 }
 

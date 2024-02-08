@@ -91,7 +91,7 @@ int	stack_command(t_stack data, char *command)
 	else if (!(ft_strncmp(command, "rrr\n", 4)))
 		stack_op_ra_rr(data);
 	else if (!(ft_strncmp(command, "ss\n", 3)))
-		stack_op_ra_ss(data, 'd');
+		stack_op_ss(data, 'd');
 	else
 		return (0);
 	return (1);

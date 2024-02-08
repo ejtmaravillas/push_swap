@@ -124,3 +124,32 @@ void	stack_sort_rem(t_stack data)
 		data.a.last = mid + (size / 2);
 	}
 }
+
+// bool	stack_check_rotation(t_stack data)
+// {
+// 	int	rcw;
+// 	int	rccw;
+// 	int	len;
+
+// 	rcw = 0;
+// 	len = stack_get_len(data.a.stack, data.a.size);
+// 	rccw = len;
+// 	while (data.a.stack[rcw] && rcw < len)
+// 	{
+// 		if ((data.a.stack[rcw] >= data.a.first)
+// 			&& (data.a.stack[rcw] <= data.a.last))
+// 			break ;
+// 		rcw++;
+// 		if (rcw == len)
+// 			break ;
+// 	}
+// 	while (data.a.stack[rcw - 1] && rccw >= 0)
+// 	{
+// 		if ((data.a.stack[rcw] >= data.a.first)
+// 			&& (data.a.stack[rcw] <= data.a.last))
+// 			break ;
+// 		rcw--;
+// 		if (rcw < 0)
+// 			break ;
+// 	}
+// }
