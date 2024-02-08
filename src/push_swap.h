@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define DIVISION 9
+# define DIVISION 5
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -33,6 +33,7 @@ typedef struct stack_info
 	int	last;
 	int	mid;
 	int	d;
+	int div;
 }	t_stackinfo;
 
 typedef struct stack_push_swap

@@ -29,6 +29,10 @@ void	stack_init(t_stack *data, t_stackinfo *stk, int size, int d)
 	stk->mid = 0;
 	stk->d = d;
 	stk->size = size;
+	if (size <= 100)
+		stk->div = 4;
+	if (size > 100)
+		stk->div = 10;
 	ft_memset(stk->stack, 0, sizeof(int) * size);
 }
 

@@ -36,8 +36,6 @@ int	main(int argc, char **argv)
 		data_init(&data_check, size, stack_raw, argc);
 	}
 	check_gnl(data_check, stack_raw);
-	print_out(data_check);
-	free_stack(&data_check);
 	return (0);
 }
 
@@ -48,6 +46,12 @@ void	check_gnl(t_stack data_check, char **stack_raw)
 	commands = malloc(1 * sizeof(char));
 	if (data_check.a.d <= 2)
 		free_stack_raw(stack_raw);
+	if (check_if_sorted(data_check, data_check.a.size))
+	{
+		free_stack(&data_check);
+		free(commands);
+		return ;
+	}
 	while (commands != NULL)
 	{
 		free(commands);
@@ -60,6 +64,8 @@ void	check_gnl(t_stack data_check, char **stack_raw)
 			error(&data_check);
 		}
 	}
+	print_out(data_check);
+	free_stack(&data_check);
 }
 
 int	stack_command(t_stack data, char *command)
